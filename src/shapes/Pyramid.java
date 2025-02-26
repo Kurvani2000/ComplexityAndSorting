@@ -1,9 +1,18 @@
 package shapes;
 
-public class Pyramid
+public class Pyramid extends Shape
 {
-	double height;
 	double side;
+	
+	double getSide()
+	{
+		return side;
+	}
+	
+	public Pyramid(double height) 
+	{
+		super(height);
+	}
 	
 	double calcBaseArea()
 	{

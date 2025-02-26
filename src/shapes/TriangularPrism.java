@@ -1,9 +1,11 @@
 package shapes;
 
-public class TriangularPrism
+public class TriangularPrism extends Prism
 {
-	double height;
-	double side;
+	public TriangularPrism(double height, double side) 
+	{
+		super(height, side);
+	}
 	
 	double calcBaseArea()
 	{

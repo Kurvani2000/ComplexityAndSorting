@@ -1,9 +1,18 @@
 package shapes;
 
-public class Cylinder
+public class Cylinder extends Shape
 {
-	double height;
 	double radius;
+	
+	public double getRadius()
+	{
+		return radius;
+	}
+	
+	public Cylinder(double height) 
+	{
+		super(height);
+	}
 	
 	double calcBaseArea()
 	{

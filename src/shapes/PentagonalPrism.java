@@ -1,9 +1,11 @@
 package shapes;
 
-public class PentagonalPrism
+public class PentagonalPrism extends Prism
 {
-	double height;
-	double side;
+	public PentagonalPrism(double height, double side) 
+	{
+		super(height, side);
+	}
 	
 	double calcBaseArea()
 	{

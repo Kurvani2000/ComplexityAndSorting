@@ -1,9 +1,11 @@
 package shapes;
 
-public class SquarePrism
+public class SquarePrism extends Prism
 {
-	double height;
-	double side;
+	public SquarePrism(double height, double side) 
+	{
+		super(height, side);
+	}
 	
 	double calcBaseArea()
 	{

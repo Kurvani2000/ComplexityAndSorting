@@ -1,10 +1,12 @@
 package shapes;
 
-public class OctagonalPrism
+public class OctagonalPrism extends Prism
 {
-	double height;
-	double side;
-	
+	public OctagonalPrism(double height, double side) 
+	{
+		super(height, side);
+	}
+
 	double calcBaseArea()
 	{
 		return 2 * (1 + Math.sqrt(2)) * Math.pow(2, this.side);

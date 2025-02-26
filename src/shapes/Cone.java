@@ -1,9 +1,18 @@
 package shapes;
 
-public class Cone
+public class Cone extends Shape
 {
-	double height;
 	double radius;
+	
+	public double getRadius()
+	{
+		return radius;
+	}
+	
+	public Cone(double height, double radius) 
+	{
+		super(height);
+	}
 	
 	double calcBaseArea()
 	{
