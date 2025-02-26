@@ -2,20 +2,18 @@ package utilities;
 
 public class BubbleSort 
 {
-	static void bubbleSort(int nums[]) 
+	static void bubbleSort(int arr[]) 
 	{
-		int b = nums.length;
-        
-        for (int i = 0; i < b - 1; i++) 
+		for (int i = 0; i < arr.length - 1; i++) 
         {
-            for (int j = 0; j < b - i - 1; j++) 
+            for (int s = 0; s < (arr.length - 1 - i); s++) 
             {
-                if (nums[j] < nums[j + 1]) 
+                if (arr[s] < arr[s + 1]) 
                 { 
-                	int temp = nums[j];
+                	int temp = arr[s];
                 	
-                    nums[j] = nums[j + 1];
-                    nums[j + 1] = temp;
+                    arr[s] = arr[s + 1];
+                    arr[s + 1] = temp;
                 }
             }
         }

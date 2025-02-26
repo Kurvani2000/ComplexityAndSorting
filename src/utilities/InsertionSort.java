@@ -4,20 +4,18 @@ public class InsertionSort
 {
 	static void insertionSort(int arr[]) 
 	{
-		int s = arr.length;
-		
-        for (int i = 1; i < s; ++i) 
+		for (int i = 1; i < arr.length; ++i) 
         {
             int key = arr[i];
-            int j = i - 1;
+            int s = i - 1;
 
-            while (j >= 0 && arr[j] > key) 
+            while (s >= 0 && arr[s] < key) 
             {
-                arr[j + 1] = arr[j];
-                j = j - 1;
+                arr[s + 1] = arr[s];
+                s = s - 1;
             }
             
-            arr[j + 1] = key;
+            arr[s + 1] = key;
         }
 	}
 }
