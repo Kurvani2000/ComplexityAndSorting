@@ -1,7 +1,5 @@
 package shapes;
 
-import java.util.Comparator;
-
 public abstract class Shape implements Comparable<Shape>
 {
 	double height;
@@ -21,14 +19,26 @@ public abstract class Shape implements Comparable<Shape>
 	
 	public int compareTo(Shape s)
 	{
-		if ( this.getHeight() > s.getHeight() ) return 1;
-		else if ( this.getHeight() < s.getHeight() ) return -1;
-		else return 0;
+		if (this.getHeight() > s.getHeight())
+		{
+			return 1;
+		}
+		else if (this.getHeight() < s.getHeight())
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 	
 	public int compare(Shape s1, Shape s2)
 	{
-		int difference = (int) (s1.calcVolume() - s2.calcVolume() - s1.calcBaseArea() - s2.calcBaseArea());
+		int sum1 = (int) (s1.calcBaseArea() + s1.calcVolume());
+		int sum2 = (int) (s2.calcBaseArea() + s2.calcVolume());
+		
+		int difference = sum1 - sum2;
 		
 		if (difference == 0) 
 		{

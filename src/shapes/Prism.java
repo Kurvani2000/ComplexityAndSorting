@@ -1,7 +1,5 @@
 package shapes;
 
-import java.util.Comparator;
-
 public abstract class Prism implements Comparable<Prism>
 {
 	double height;
@@ -28,14 +26,26 @@ public abstract class Prism implements Comparable<Prism>
 	
 	public int compareTo(Prism p)
 	{
-		if ( this.getHeight() > p.getHeight() ) return 1;
-		else if ( this.getHeight() < p.getHeight() ) return -1;
-		else return 0;
+		if (this.getHeight() > p.getHeight())
+		{
+			return 1;
+		}
+		else if (this.getHeight() < p.getHeight())
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 	
 	public int compare(Prism p1, Prism p2)
 	{
-		int difference = (int) (p1.calcVolume() - p2.calcVolume() - p1.calcBaseArea() - p2.calcBaseArea());
+		int sum1 = (int) (p1.calcBaseArea() + p1.calcVolume());
+		int sum2 = (int) (p2.calcBaseArea() + p2.calcVolume());
+		
+		int difference = sum1 - sum2;
 		
 		if (difference == 0) 
 		{
