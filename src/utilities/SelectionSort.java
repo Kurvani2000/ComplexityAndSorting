@@ -1,11 +1,11 @@
 package utilities;
-import java.util.Comparator;
-import java.util.Arrays;
 
-/**
- * Utility to sort an array via selection sort.
- */
-public class SelectionSort {
+import java.util.Comparator;
+import java.util.List;
+import shapes.Shape;
+
+public class SelectionSort 
+{
 	
 	/**
 	 * Sorts an array of Comparable objects via selection sort.
@@ -14,18 +14,21 @@ public class SelectionSort {
 	 * 
 	 * return void. Input array will be altered.
 	 */
-	public static <T> void selectionSort(Comparable<T>[] array){  
-		for (int i = 0; i < array.length - 1; i++)  
+	public static void sort(List<Shape> shapes, Comparator<Shape> comparator)
+	{  
+		for (int i = 0; i < shapes.size() - 1; i++)  
         {  
             int index = i;  
-            for (int j = i + 1; j < array.length; j++){  
-                if (((Comparable<T>)array[j]).compareTo((T) array[index]) == -1 ){  
-                    index = j;//searching for lowest index  
+            for (int j = i + 1; j < shapes.size(); j++){  
+                if (comparator.compare(shapes.get(j), shapes.get(index)) > 0)
+                {  
+                    index = j; //searching for lowest index  
                 }  
             }  
-            Comparable smallerNumber = array[index];   
-            array[index] = array[i];  
-            array[i] = smallerNumber;  
+            
+            Shape smallerNumber = shapes.get(index);
+			shapes.set(index, shapes.get(i));
+			shapes.set(i, smallerNumber);
         }
     } 
 	
@@ -37,15 +40,19 @@ public class SelectionSort {
 	 * 
 	 * return void. Input array will be altered.
 	 */
-	public static <T> void selectionSort(Comparable<T>[] array, Comparator<? super T> c){  
+	public static <T> void selectionSort(Comparable<T>[] array, Comparator<? super T> c)
+	{  
 		for (int i = 0; i < array.length - 1; i++)  
         {  
             int index = i;  
-            for (int j = i + 1; j < array.length; j++){  
-                if (c.compare( (T) array[j], (T) array[index]) == -1 ){  
+            for (int j = i + 1; j < array.length; j++)
+            {  
+                if (c.compare( (T) array[j], (T) array[index]) == -1 )
+                {  
                     index = j;//searching for lowest index  
                 }  
             }  
+            
             Comparable smallerNumber = array[index];   
             array[index] = array[i];  
             array[i] = smallerNumber;  
