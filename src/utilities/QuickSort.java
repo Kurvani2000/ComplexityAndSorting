@@ -6,18 +6,30 @@ import shapes.Shape;
 
 public class QuickSort 
 {
-	public void sort(List<Shape> shapes, Comparator<Shape> comparator, int low, int high) 
+	public static void sort(List<Shape> shapes, Comparator<Shape> comparator) 
 	{
-		if (low < high) 
+		if (shapes == null || comparator == null) 
 		{
-			int pi = partition(shapes, comparator, low, high);
-
-			sort(shapes, comparator, low, pi - 1);
-			sort(shapes, comparator, pi + 1, high);
-		}
+            throw new IllegalArgumentException("Shapes list and comparator must not be null.");
+        }
+		
+        quickSort(shapes, comparator, 0, shapes.size() - 1);
 	}
 	
-	private int partition(List<Shape> shapes, Comparator<Shape> comparator, int low, int high) 
+	private static void quickSort(List<Shape> shapes, Comparator<Shape> comparator, int low, int high) 
+	{
+        if (low < high) 
+        {
+            //Partition the list and get the pivot index
+            int pi = partition(shapes, comparator, low, high);
+
+            //Recursively sort the sublists before and after the pivot
+            quickSort(shapes, comparator, low, pi - 1);
+            quickSort(shapes, comparator, pi + 1, high);
+        }
+    }
+	
+	private static int partition(List<Shape> shapes, Comparator<Shape> comparator, int low, int high) 
 	{
 		Shape pivot = shapes.get(high);
 		int i = low - 1;

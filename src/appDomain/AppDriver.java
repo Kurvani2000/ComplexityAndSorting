@@ -91,7 +91,7 @@ public class AppDriver
         } 
         else if (sortAlgorithm == 'z') 
         {
-            Heap.sort(shapes, comparator);
+            HeapSort.sort(shapes, comparator);
         } 
         else 
         {
