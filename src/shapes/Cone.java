@@ -2,24 +2,28 @@ package shapes;
 
 public class Cone extends Shape
 {
-	double radius;
-	
-	public double getRadius()
-	{
-		return radius;
-	}
+	private double height, radius;
 	
 	public Cone(double height, double radius) 
 	{
-		super(height);
+		this.height = height;
+        this.radius = radius;
 	}
 	
-	double calcBaseArea()
+	@Override
+	public double getHeight() 
+	{
+		return height;
+	}
+	
+	@Override
+	public double calcBaseArea()
 	{
 		return Math.pow(2, this.radius) * 3.14;
 	}
 	
-	double calcVolume()
+	@Override
+	public double calcVolume()
 	{
 		return 3.14 / 3 * Math.pow(2, this.radius)  * this.height;
 	}

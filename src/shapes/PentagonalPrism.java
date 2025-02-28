@@ -1,18 +1,29 @@
 package shapes;
 
-public class PentagonalPrism extends Prism
+public class PentagonalPrism extends Shape
 {
+	private double height, side;
+	
 	public PentagonalPrism(double height, double side) 
 	{
-		super(height, side);
+		this.height = height;
+        this.side = side;
+	}
+
+	@Override
+	public double getHeight() 
+	{
+		return height;
 	}
 	
-	double calcBaseArea()
+	@Override
+	public double calcBaseArea()
 	{
 		return (5 * Math.pow(2, this.side) * Math.tan(54)) / 4;
 	}
 	
-	double calcVolume()
+	@Override
+	public double calcVolume()
 	{
 		return calcBaseArea()  * this.height;
 	}

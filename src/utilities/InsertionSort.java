@@ -1,21 +1,32 @@
 package utilities;
 
+import java.util.Comparator;
+import java.util.List;
+import shapes.Shape;
+
 public class InsertionSort 
 {
-	static void insertionSort(int arr[]) 
+	public static void sort(List<Shape> shapes, Comparator<Shape> comparator)
 	{
-		for (int i = 1; i < arr.length; ++i) 
+		if (shapes == null || comparator == null) 
+		{
+			throw new IllegalArgumentException("Shapes list and comparator must not be null.");
+	    }
+		
+		int n = shapes.size();
+		
+		for (int i = 1; i < n; ++i) 
         {
-            int key = arr[i];
+            Shape key = shapes.get(i);
             int s = i - 1;
 
-            while (s >= 0 && arr[s] < key) 
+            while (s >= 0 && comparator.compare(shapes.get(s), key) < 0) 
             {
-                arr[s + 1] = arr[s];
-                s = s - 1;
+            	shapes.set(s + 1, shapes.get(s));
+                s--;
             }
             
-            arr[s + 1] = key;
+            shapes.set(s + 1, key);
         }
 	}
 }

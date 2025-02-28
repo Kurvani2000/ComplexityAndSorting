@@ -1,22 +1,14 @@
 package shapes;
 
+import java.util.Comparator;
+
 public abstract class Shape implements Comparable<Shape>
-{
-	double height;
+{	
+	public abstract double getHeight();
+	public abstract double calcVolume();
+	public abstract double calcBaseArea();
 	
-	public double getHeight()
-	{
-		return height;
-	}
-	
-	public Shape(double height)
-	{
-		this.height = height;
-	}
-	
-	abstract double calcVolume();
-	abstract double calcBaseArea();
-	
+	@Override
 	public int compareTo(Shape s)
 	{
 		if (this.getHeight() > s.getHeight())
@@ -33,24 +25,23 @@ public abstract class Shape implements Comparable<Shape>
 		}
 	}
 	
-	public int compare(Shape s1, Shape s2)
-	{
-		int sum1 = (int) (s1.calcBaseArea() + s1.calcVolume());
-		int sum2 = (int) (s2.calcBaseArea() + s2.calcVolume());
-		
-		int difference = sum1 - sum2;
-		
-		if (difference == 0) 
-		{
-			return 0;
-	    }
-	    else if (difference < 0) 
-	    {
-	         return -1;
-	    }
-	    else 
-	    {
-	         return 1;
-	    }   
-	}
+	 // Static Comparator for Volume
+    public static final Comparator<Shape> VOLUME_COMPARATOR = new Comparator<Shape>() 
+    {
+        @Override
+        public int compare(Shape s1, Shape s2) 
+        {
+            return Double.compare(s1.calcVolume(), s2.calcVolume());
+        }
+    };
+
+    // Static Comparator for Base Area
+    public static final Comparator<Shape> BASE_AREA_COMPARATOR = new Comparator<Shape>() 
+    {
+        @Override
+        public int compare(Shape s1, Shape s2) 
+        {
+            return Double.compare(s1.calcBaseArea(), s2.calcBaseArea());
+        }
+    };
 }
